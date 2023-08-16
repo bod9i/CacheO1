@@ -11,7 +11,7 @@ namespace ChacheProvider
 
         public CacheProvider(int size = 4)
         {
-            cache = new Dictionary<string, CustomNode<T>>();
+            cache = new Dictionary<string, CustomNode<T>>(size);
             list = new CustomLinkedList<T>();
 
             count = 0;
@@ -30,7 +30,7 @@ namespace ChacheProvider
                 throw new ArgumentException(nameof(key));
             }
 
-            if (count == size)
+            if (count == size && count != 0)
             {
                 list.Remove(list.First);
                 count--;
@@ -49,10 +49,11 @@ namespace ChacheProvider
                 throw new ArgumentException(nameof(key));
             }
 
-            var itemForDelete = item;
-
-            list.Remove(itemForDelete);
-            list.Add(item);
+            if (count > 1)
+            {
+                list.Add(item);
+                list.Remove(item);
+            }
 
             return item.Value;
         }

@@ -1,4 +1,5 @@
 ﻿using ChacheProvider;
+using CustomLinkedList;
 using System.Diagnostics;
 
 namespace ConsoleApp6
@@ -36,14 +37,14 @@ namespace ConsoleApp6
             cacheProvider.Add("5", 5);
             sw8.Stop();
 
-            Console.WriteLine($"Execution time (ms) of adding element (key = \"1\"): {sw1.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of adding element (key = \"2\"): {sw2.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of adding element (key = \"3\"): {sw3.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of adding element (key = \"4\"): {sw4.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of selecting element (key = \"1\"): {sw5.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of selecting element (key = \"2\"): {sw6.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of selecting element (key = \"3\"): {sw7.ElapsedTicks}");
-            Console.WriteLine($"Execution time (ms) of adding element (key = \"5\"): {sw8.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of adding element (key = \"1\"): {sw1.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of adding element (key = \"2\"): {sw2.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of adding element (key = \"3\"): {sw3.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of adding element (key = \"4\"): {sw4.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of selecting element (key = \"1\"): {sw5.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of selecting element (key = \"2\"): {sw6.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of selecting element (key = \"3\"): {sw7.ElapsedTicks}");
+            Console.WriteLine($"Execution time (ticks) of adding element (key = \"5\"): {sw8.ElapsedTicks}");
         }
     }
 }

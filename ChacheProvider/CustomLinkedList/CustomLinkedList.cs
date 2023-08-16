@@ -49,7 +49,13 @@
                 return;
             }
 
-            if (item == head)
+            if (item == head && count == 1)
+            {
+                head = null!;
+                count--;
+                return;
+            }
+            else if (item == head)
             {
                 head.Next.Prev = null!;
                 head = head.Next;
