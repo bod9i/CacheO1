@@ -4,15 +4,15 @@ namespace ChacheProvider
 {
     public class CacheProvider<T>
     {
-        private readonly IDictionary<string, CustomNode<T>> cache;
-        private readonly CustomLinkedList<T> list;
+        private readonly IDictionary<string, CustomNode<(string key, T value)>> cache;
+        private readonly CustomLinkedList<(string key, T value)> list;
         private readonly int size;
         private int count;
 
         public CacheProvider(int size = 4)
         {
-            cache = new Dictionary<string, CustomNode<T>>(size);
-            list = new CustomLinkedList<T>();
+            cache = new Dictionary<string, CustomNode<(string, T)>>(size);
+            list = new CustomLinkedList<(string, T)>();
 
             count = 0;
             this.size = size;
@@ -32,11 +32,12 @@ namespace ChacheProvider
 
             if (count == size && count != 0)
             {
+                cache.Remove(list.First.Value.key);
                 list.Remove(list.First);
                 count--;
             }
 
-            var resultNode = list.Add(new CustomNode<T> { Value = value });
+            var resultNode = list.Add(new CustomNode<(string, T)> { Value = (key, value) });
 
             cache.Add(key, resultNode);
             count++;
@@ -51,11 +52,11 @@ namespace ChacheProvider
 
             if (count > 1)
             {
-                list.Add(item);
                 list.Remove(item);
+                list.Add(item);
             }
 
-            return item.Value;
+            return item.Value.value;
         }
     }
 }
